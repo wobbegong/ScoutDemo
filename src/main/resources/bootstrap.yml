@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: pmar-registration-service

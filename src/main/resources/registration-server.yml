@@ -1,0 +1,33 @@
+# Configure this Discovery Server
+server:
+  port: ${pmar.application.port:8761}   # HTTP (Tomcat) port
+
+---
+spring:
+  profiles: standalone
+eureka:
+  instance:
+    hostname: localhost
+  client:  # Not a client, don't register with yourself
+    registerWithEureka: false
+    fetchRegistry: false
+    
+---
+spring:
+  profiles: clusternode1
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: ${pmar.eureka.host}
+
+---
+spring:
+  profiles: clusternode2
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: ${pmar.eureka.host}
